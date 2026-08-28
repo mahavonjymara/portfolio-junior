@@ -1,17 +1,41 @@
 ---
-
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Accueil | Portfolio Senior JS">
+  <section class="py-16 md:py-24">
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+      Développeur Senior <span class="text-blue-600">JavaScript</span>
+    </h1>
+    <p class="text-lg md:text-xl text-slate-600 max-w-2xl mb-10 leading-relaxed">
+      Je conçois des architectures web performantes, maintenables et centrées sur l'utilisateur. 
+      Spécialisé en React, Node.js et optimisation des Core Web Vitals.
+    </p>
+    
+    <div class="flex flex-wrap gap-4">
+      <a href="/projets" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+        Voir mes études de cas
+      </a>
+      <a href="/a-propos" class="px-6 py-3 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-100 transition-colors">
+        Mon parcours
+      </a>
+    </div>
+  </section>
+
+  <!-- Petite section pour montrer que vous maîtrisez les concepts -->
+  <section class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+      <h3 class="font-bold text-lg mb-2">⚡ Performance</h3>
+      <p class="text-slate-600 text-sm">Architecture "Islands" pour un JS minimal et des scores Lighthouse 100/100.</p>
+    </div>
+    <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+      <h3 class="font-bold text-lg mb-2">🛡️ Type Safety</h3>
+      <p class="text-slate-600 text-sm">TypeScript strict et validation des données avec Zod de bout en bout.</p>
+    </div>
+    <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+      <h3 class="font-bold text-lg mb-2">♿ Accessibilité</h3>
+      <p class="text-slate-600 text-sm">HTML sémantique, navigation au clavier et respect des normes WCAG.</p>
+    </div> <!-- CORRECTION ICI : le ">" était manquant -->
+  </section>
+</BaseLayout>

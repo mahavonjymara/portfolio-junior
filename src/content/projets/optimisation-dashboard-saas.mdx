@@ -1,0 +1,24 @@
+---
+title: "Optimisation des performances d'un Dashboard SaaS"
+description: "Réduction du temps de chargement initial de 4.2s à 0.8s en migrant vers une architecture à base de React Server Components et en optimisant le bundle."
+date: 2024-10-15
+tags: ["Performance", "React", "Architecture"]
+stack: ["Next.js", "TypeScript", "Tailwind", "PostgreSQL"]
+demoUrl: "https://demo.exemple.com"
+repoUrl: "https://github.com/votre-pseudo/projet-exemple"
+---
+
+## Le Contexte
+Le dashboard principal de l'application souffrait de temps de chargement importants (> 4s) en raison d'un bundle JavaScript trop volumineux et de requêtes de données effectuées côté client de manière séquentielle.
+
+## La Solution Architecturale
+1. **Migration vers le rendu serveur** : Déplacement de la logique de récupération des données (Data Fetching) vers le serveur pour éliminer le waterfall de requêtes côté client.
+2. **Code Splitting agressif** : Utilisation de `next/dynamic` (ou Suspense) pour ne charger les graphiques lourds (Recharts) que lorsqu'ils sont visibles à l'écran.
+3. **Optimisation des assets** : Passage des images en format WebP/AVIF avec des dimensions explicites pour éviter les Layout Shifts (CLS).
+
+## Les Résultats
+- **First Contentful Paint (FCP)** : Réduit de 4.2s à **0.8s**.
+- **Taille du bundle JS** : Réduite de **65%** pour la route principale.
+- **Score Lighthouse** : Passage de 62 à **98** en Performance.
+
+> "La performance n'est pas une fonctionnalité, c'est une exigence de base pour l'expérience utilisateur."

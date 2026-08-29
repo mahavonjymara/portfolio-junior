@@ -1,4 +1,5 @@
 ---
+// src/layouts/BaseLayout.astro
 import '../styles/global.css';
 import Navbar from '../components/Navbar.tsx';
 import SEO from '../components/SEO.astro';
@@ -35,15 +36,14 @@ const { title, description = "Portfolio de Mahavonjy Mara - Développeur Senior 
     <div class="h-16"></div>
 
     <main class="flex-grow w-full">
-      {#if fullWidth}
-        <!-- Layout plein écran (sans padding) -->
+      {/* Syntaxe correcte pour Astro : opérateur ternaire */}
+      {fullWidth ? (
         <slot />
-      {:else}
-        <!-- Layout standard avec conteneur -->
+      ) : (
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <slot />
         </div>
-      {/if}
+      )}
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 mt-auto transition-colors">

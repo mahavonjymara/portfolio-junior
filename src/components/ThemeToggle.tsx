@@ -5,7 +5,6 @@ export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Vérifie l'état initial au montage
     setIsDark(document.documentElement.classList.contains('dark'));
   }, []);
 
@@ -25,7 +24,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+      className="p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
       aria-label="Basculer le mode sombre"
     >
       {isDark ? (

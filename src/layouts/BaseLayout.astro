@@ -1,5 +1,4 @@
 ---
-// src/layouts/BaseLayout.astro
 import '../styles/global.css';
 import Navbar from '../components/Navbar.tsx';
 import SEO from '../components/SEO.astro';
@@ -7,20 +6,21 @@ import SEO from '../components/SEO.astro';
 interface Props {
   title: string;
   description?: string;
+  fullWidth?: boolean; // Nouveau prop pour les pages plein écran
 }
 
-const { title, description = "Portfolio de Développeur Junior JS" } = Astro.props;
+const { title, description = "Portfolio de Mahavonjy Mara - Développeur Senior JavaScript", fullWidth = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <title>{title}</title>
-
-     <script is:inline>
+    <SEO title={title} description={description} />
+    
+    <!-- Script Anti-Flash (FOUC) -->
+    <script is:inline>
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
       } else {
@@ -28,24 +28,27 @@ const { title, description = "Portfolio de Développeur Junior JS" } = Astro.pro
       }
     </script>
   </head>
- <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300">
+  
+  <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300">
     
-    <!-- Navbar React avec hydratation -->
     <Navbar client:load />
-
-    <!-- Spacer pour compenser le header fixed -->
     <div class="h-16"></div>
 
-    <!-- Contenu principal avec largeur adaptative -->
     <main class="flex-grow w-full">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      {#if fullWidth}
+        <!-- Layout plein écran (sans padding) -->
         <slot />
-      </div>
+      {:else}
+        <!-- Layout standard avec conteneur -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+          <slot />
+        </div>
+      {/if}
     </main>
 
-    <footer class="border-t border-slate-200 bg-white py-8 mt-auto">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-        <p>© {new Date().getFullYear()} · Construit avec Astro, React & Tailwind CSS</p>
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 mt-auto transition-colors">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500 dark:text-slate-400">
+        <p>© {new Date().getFullYear()} · Mahavonjy Mara - Développeur Senior JS</p>
         <p class="mt-2 text-xs">Performance, Accessibilité et Type Safety.</p>
       </div>
     </footer>

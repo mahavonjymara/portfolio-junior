@@ -21,13 +21,13 @@ const services = [
 ];
 ---
 
-<BaseLayout title="Services | MARA - Développeur Full Stack">
+<BaseLayout title="Services | MARA - Développeur Full Stack" fullWidth={true}>
   
-  <!-- Page Services avec fond teal clair et marges négatives pour couvrir toute la largeur -->
-  <div class="min-h-screen bg-gradient-to-br from-[#e0f2f1] via-[#b2dfdb] to-[#80cbc4] -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-20">
-    <div class="max-w-7xl mx-auto">
+  <!-- Page Services plein écran avec fond teal clair -->
+  <div class="min-h-screen bg-gradient-to-br from-[#e0f2f1] via-[#b2dfdb] to-[#80cbc4] py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- En-tête de la page -->
+      <!-- En-tête -->
       <div class="text-center mb-16">
         <h1 class="text-4xl md:text-5xl font-extrabold text-[#004d40] mb-4">
           Mes Services
@@ -43,7 +43,7 @@ const services = [
         {services.map((service) => (
           <div class="bg-[#e0f7fa] rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[#b2ebf2]">
             
-            <!-- Icône agrandie (comme sur la capture) -->
+            <!-- Icône agrandie -->
             <div class="flex justify-center mb-6">
               {service.icon === 'code' && (
                 <svg className="w-32 h-32 text-slate-900" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@ const services = [
               {service.description}
             </p>
 
-            <!-- Bouton Read More -->
+            <!-- Bouton -->
             <div class="flex justify-center">
               <button class="px-6 py-3 bg-[#00796B] text-white font-semibold rounded-lg hover:bg-[#00695C] transition-all duration-300 shadow-md hover:shadow-lg">
                 Read More
@@ -84,7 +84,7 @@ const services = [
 
       </div>
 
-      <!-- Section CTA -->
+      <!-- CTA -->
       <div class="mt-20 text-center">
         <h2 class="text-3xl font-bold text-[#004d40] mb-4">
           Prêt à démarrer votre projet ?
@@ -99,5 +99,4 @@ const services = [
 
     </div>
   </div>
-
 </BaseLayout>

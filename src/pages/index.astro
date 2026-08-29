@@ -3,13 +3,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Accueil | MARA - Développeur Full Stack">
+<BaseLayout title="Accueil | MARA - Développeur Full Stack" fullWidth={true}>
   
-  <!-- Conteneur plein écran avec marges négatives pour annuler le padding du layout -->
-  <div class="min-h-screen bg-gradient-to-br from-[#022c22] via-[#064e3b] to-[#0f766e] -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+  <!-- Page d'accueil plein écran avec fond teal -->
+  <div class="min-h-screen bg-gradient-to-br from-[#022c22] via-[#064e3b] to-[#0f766e]">
     
-    <!-- Contenu principal centré -->
-    <div class="max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] text-center">
+    <!-- Contenu centré verticalement -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
       
       <!-- Titre principal -->
       <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 animate-fade-in-up">
@@ -17,7 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </h1>
       
       <!-- Sous-titre -->
-      <p class="text-xl md:text-2xl text-emerald-100 max-w-3xl mb-12 leading-relaxed">
+      <p class="text-xl md:text-2xl text-emerald-100 max-w-3xl text-center mb-12 leading-relaxed">
         Je conçois des architectures web performantes, maintenables et centrées sur l'utilisateur. 
         Spécialisé en React, Node.js et optimisation des Core Web Vitals.
       </p>
@@ -32,7 +32,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
       </div>
 
-      <!-- Section Compétences (Cartes avec effet glassmorphism) -->
+      <!-- Section Compétences -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
         <div class="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300">
           <div class="text-4xl mb-4"></div>

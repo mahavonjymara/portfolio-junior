@@ -2,11 +2,15 @@
 // src/pages/a-propos.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatutActuel from '../components/StatutActuel.tsx';
+import ContactForm from '../components/ContactForm.tsx';
+import TimelineStack from '../components/TimelineStack.tsx';
 
 const competences = {
-  frontend: ["React", "Next.js", "Astro", "TypeScript", "Tailwind CSS", "Vue.js"],
-  backend: ["Node.js", "NestJS", "PostgreSQL", "Prisma", "GraphQL", "Redis"],
-  devops: ["Docker", "CI/CD (GitHub Actions)", "Vercel", "AWS (S3, Lambda)", "Linux"]
+  backend: ["Python", "Java", "C#", "PHP", "JavaScript"],
+  frontend: ["React", "Vite", "Next.js", "Astro", "TypeScript", "TailwindCSS", "Bootstrap", "HTML5", "CSS3"],
+  frameworks: ["Laravel", "Django", "Spring Boot", "Servlet", "Express", ".NET"],
+  databases: ["MySQL", "PostgreSQL", "MongoDB", "Prisma", "Hibernate"],
+  outils: ["Git", "GitHub", "GitHub Actions", "Docker", "CI/CD"]
 };
 
 const philosophies = [
@@ -25,7 +29,7 @@ const philosophies = [
 ];
 ---
 
-<BaseLayout title="À propos | Portfolio Senior JS">
+<BaseLayout title="À propos | Portfolio Junior JS">
   <article class="max-w-4xl mx-auto space-y-16">
     
     <!-- Section 1 : Introduction & Statut -->
@@ -33,7 +37,7 @@ const philosophies = [
       <div class="flex-1">
         <h1 class="text-4xl font-bold text-slate-900 mb-6">Plus qu'un codeur, un partenaire technique.</h1>
         <p class="text-lg text-slate-600 leading-relaxed mb-4">
-          Avec plus de 7 ans d'expérience dans l'écosystème JavaScript, j'ai évolué du développement de fonctionnalités isolées à la conception d'architectures complètes. 
+          Avec plus de 7 ans d'expérience dans l'écosystème JavaScript et les technologies web, j'ai évolué du développement de fonctionnalités isolées à la conception d'architectures complètes. 
         </p>
         <p class="text-lg text-slate-600 leading-relaxed">
           Aujourd'hui, mon rôle est de faire le pont entre les besoins métier et l'excellence technique, tout en montant en compétence les équipes avec qui je travaille.
@@ -46,43 +50,535 @@ const philosophies = [
       </div>
     </section>
 
-    <!-- Section 2 : Stack Technique (Catégorisée) -->
+    <!-- Section 2 : Stack Technique (Timeline) -->
     <section>
-      <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-        <span class="text-blue-600">⚡</span> Stack Technique
+      <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+        <span class="text-blue-600"></span> Stack Technique
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-semibold text-slate-900 mb-3">Frontend</h3>
-          <div class="flex flex-wrap gap-2">
-            {competences.frontend.map(tech => (
-              <span class="px-3 py-1 text-sm bg-blue-50 text-blue-700 rounded-md font-medium">{tech}</span>
-            ))}
+      
+      <TimelineStack client:visible />
+    </section>
+
+    <!-- Section : Expériences Professionnelles (Timeline) -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+        <span class="text-blue-600"></span> Expériences Professionnelles
+      </h2>
+      
+      <div class="relative">
+        <!-- Ligne verticale de la timeline -->
+        <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200 md:left-1/2 md:-ml-px"></div>
+
+        <!-- Expérience 1 (La plus récente) -->
+        <div class="relative mb-12 md:mb-16">
+          <div class="flex items-center md:justify-start">
+            <!-- Point sur la timeline -->
+            <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-md -ml-2 md:-ml-2 z-10"></div>
+            
+            <!-- Contenu -->
+            <div class="ml-16 md:ml-0 md:w-1/2 md:pr-12">
+              <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <span class="px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800 rounded-full">
+                    2022 - Présent
+                  </span>
+                  <span class="text-xs text-slate-500">· Paris, France</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-1">Lead Développeur Full Stack</h3>
+                <p class="text-blue-600 font-medium mb-3">TechCorp Solutions</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-600 mt-1">▸</span>
+                    <span>Architecture et développement d'une plateforme SaaS servant 50k+ utilisateurs</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-600 mt-1">▸</span>
+                    <span>Migration d'une application legacy PHP vers Next.js/TypeScript, réduisant le temps de chargement de 60%</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-600 mt-1">▸</span>
+                    <span>Mentorat de 4 développeurs juniors et mise en place de revues de code systématiques</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-blue-600 mt-1">▸</span>
+                    <span>Stack : React, Node.js, PostgreSQL, Docker, AWS</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-semibold text-slate-900 mb-3">Backend & Data</h3>
-          <div class="flex flex-wrap gap-2">
-            {competences.backend.map(tech => (
-              <span class="px-3 py-1 text-sm bg-emerald-50 text-emerald-700 rounded-md font-medium">{tech}</span>
-            ))}
+
+        <!-- Expérience 2 -->
+        <div class="relative mb-12 md:mb-16">
+          <div class="flex items-center md:justify-end">
+            <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-md -ml-2 md:-ml-2 z-10"></div>
+            
+            <div class="ml-16 md:ml-0 md:w-1/2 md:pl-12">
+              <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <span class="px-3 py-1 text-xs font-semibold bg-emerald-100 text-emerald-800 rounded-full">
+                    2019 - 2022
+                  </span>
+                  <span class="text-xs text-slate-500">· Lyon, France</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-1">Développeur Full Stack Senior</h3>
+                <p class="text-emerald-600 font-medium mb-3">Digital Innovations SAS</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-600 mt-1">▸</span>
+                    <span>Développement d'applications e-commerce à fort trafic (100k+ visites/jour)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-600 mt-1">▸</span>
+                    <span>Optimisation des performances backend : réduction du temps de réponse API de 4.2s à 0.8s</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-600 mt-1">▸</span>
+                    <span>Mise en place de pipelines CI/CD avec GitHub Actions et déploiement automatique</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-600 mt-1">▸</span>
+                    <span>Stack : Laravel, Vue.js, MySQL, Redis, Docker</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="font-semibold text-slate-900 mb-3">DevOps & Outils</h3>
-          <div class="flex flex-wrap gap-2">
-            {competences.devops.map(tech => (
-              <span class="px-3 py-1 text-sm bg-purple-50 text-purple-700 rounded-md font-medium">{tech}</span>
-            ))}
+
+        <!-- Expérience 3 -->
+        <div class="relative mb-12 md:mb-16">
+          <div class="flex items-center md:justify-start">
+            <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-md -ml-2 md:-ml-2 z-10"></div>
+            
+            <div class="ml-16 md:ml-0 md:w-1/2 md:pr-12">
+              <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <span class="px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full">
+                    2017 - 2019
+                  </span>
+                  <span class="text-xs text-slate-500">· Antananarivo, Madagascar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-1">Développeur Web</h3>
+                <p class="text-purple-600 font-medium mb-3">WebAgency Mada</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2">
+                    <span class="text-purple-600 mt-1">▸</span>
+                    <span>Développement de sites web et applications pour des clients internationaux</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-purple-600 mt-1">▸</span>
+                    <span>Création d'APIs RESTful avec Spring Boot et intégration de services tiers</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-purple-600 mt-1">▸</span>
+                    <span>Collaboration avec des équipes distribuées (méthodologie Agile/Scrum)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-purple-600 mt-1">▸</span>
+                    <span>Stack : Java, Spring Boot, Angular, PostgreSQL</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expérience 4 (La plus ancienne) -->
+        <div class="relative">
+          <div class="flex items-center md:justify-end">
+            <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-slate-400 rounded-full border-4 border-white shadow-md -ml-2 md:-ml-2 z-10"></div>
+            
+            <div class="ml-16 md:ml-0 md:w-1/2 md:pl-12">
+              <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <span class="px-3 py-1 text-xs font-semibold bg-slate-100 text-slate-700 rounded-full">
+                    2015 - 2017
+                  </span>
+                  <span class="text-xs text-slate-500">· Antananarivo, Madagascar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-1">Développeur Junior</h3>
+                <p class="text-slate-600 font-medium mb-3">StartUp Tech Mada</p>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-start gap-2">
+                    <span class="text-slate-500 mt-1">▸</span>
+                    <span>Développement de fonctionnalités front-end avec React et Bootstrap</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-slate-500 mt-1">▸</span>
+                    <span>Maintenance et correction de bugs sur des applications existantes</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-slate-500 mt-1">▸</span>
+                    <span>Stack : JavaScript, PHP, MySQL, HTML/CSS</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 3 : Philosophie de travail -->
+        <!-- Section : Formations & Certifications -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+        <span class="text-blue-600"></span> Formations & Certifications
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Colonne 1 : Formations Académiques -->
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              
+            </span>
+            Formations Académiques
+          </h3>
+          
+          <div class="space-y-4">
+            <!-- Formation 1 -->
+            <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900">Master en Informatique</h4>
+                  <p class="text-sm text-blue-600 font-medium">Institut de Formation Technique Fianarantsoa</p>
+                </div>
+                <span class="px-2 py-1 text-xs font-semibold bg-blue-50 text-blue-700 rounded">
+                  2013 - 2015
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 mt-2">
+                Spécialisation en génie logiciel et architectures distribuées. Mémoire sur l'optimisation des performances des applications web.
+              </p>
+            </div>
+
+            <!-- Formation 2 -->
+            <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900">Licence en Informatique</h4>
+                  <p class="text-sm text-blue-600 font-medium">Institut de Formation Technique Fianarantsoa</p>
+                </div>
+                <span class="px-2 py-1 text-xs font-semibold bg-blue-50 text-blue-700 rounded">
+                  2010 - 2013
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 mt-2">
+                Formation complète en algorithmique, structures de données, bases de données et développement web.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne 2 : Certifications Professionnelles -->
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center">
+              
+            </span>
+            Certifications Professionnelles
+          </h3>
+          
+          <div class="space-y-4">
+            <!-- Certification 1 -->
+            <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900">AWS Certified Developer - Associate</h4>
+                  <p class="text-sm text-emerald-600 font-medium">Amazon Web Services</p>
+                </div>
+                <span class="px-2 py-1 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded">
+                  2024
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 mt-2">
+                Validation des compétences en développement d'applications cloud natives sur AWS (EC2, S3, Lambda, DynamoDB).
+              </p>
+              <a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center gap-1 mt-3 text-xs text-blue-600 hover:underline">
+                Voir le badge ↗
+              </a>
+            </div>
+
+            <!-- Certification 2 -->
+            <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900">Meta Front-End Developer Professional</h4>
+                  <p class="text-sm text-emerald-600 font-medium">Meta (via Coursera)</p>
+                </div>
+                <span class="px-2 py-1 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded">
+                  2023
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 mt-2">
+                Maîtrise avancée de React, JavaScript moderne, testing et principes de design responsive.
+              </p>
+              <a href="https://www.coursera.org/professional-certificates/meta-front-end-developer" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center gap-1 mt-3 text-xs text-blue-600 hover:underline">
+                Voir le certificat ↗
+              </a>
+            </div>
+
+            <!-- Certification 3 -->
+            <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900">Docker Certified Associate</h4>
+                  <p class="text-sm text-emerald-600 font-medium">Docker Inc.</p>
+                </div>
+                <span class="px-2 py-1 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded">
+                  2023
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 mt-2">
+                Expertise en conteneurisation, orchestration Docker Swarm/Kubernetes, et bonnes pratiques de déploiement.
+              </p>
+              <a href="https://www.docker.com/services/certification/" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center gap-1 mt-3 text-xs text-blue-600 hover:underline">
+                Vérifier la certification ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Note additionnelle (optionnelle) -->
+      <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p class="text-sm text-blue-800">
+          <span class="font-semibold">Formation continue :</span> Je me forme régulièrement aux nouvelles technologies via des plateformes comme Udemy, Pluralsight et la documentation officielle des frameworks que j'utilise.
+        </p>
+      </div>
+    </section>
+
+        <!-- Section : Projets Open Source & Contributions -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+        <span class="text-blue-600"></span> Projets Open Source & Contributions
+      </h2>
+      
+      <div class="space-y-8">
+        
+        <!-- Projets Personnels Open Source -->
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 bg-slate-900 text-white rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+            </span>
+            Projets Personnels
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Projet 1 -->
+            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
+              <div class="flex items-start justify-between mb-3">
+                <h4 class="font-bold text-slate-900 text-lg">React Performance Toolkit</h4>
+                <div class="flex items-center gap-3 text-sm text-slate-500">
+                  <span class="flex items-center gap-1" title="Stars">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                    </svg>
+                    234
+                  </span>
+                  <span class="flex items-center gap-1" title="Forks">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"/>
+                    </svg>
+                    45
+                  </span>
+                </div>
+              </div>
+              <p class="text-sm text-slate-600 mb-4">
+                Une collection d'hooks React et d'utilitaires pour optimiser les performances des applications React. Inclut des outils de memoization, lazy loading et virtualisation.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 text-xs bg-blue-50 text-blue-700 rounded">TypeScript</span>
+                <span class="px-2 py-1 text-xs bg-blue-50 text-blue-700 rounded">React</span>
+                <span class="px-2 py-1 text-xs bg-blue-50 text-blue-700 rounded">Performance</span>
+              </div>
+              <a href="https://github.com/votre-username/react-performance-toolkit" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                Voir sur GitHub
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
+              <div class="flex items-start justify-between mb-3">
+                <h4 class="font-bold text-slate-900 text-lg">Node.js API Boilerplate</h4>
+                <div class="flex items-center gap-3 text-sm text-slate-500">
+                  <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                    </svg>
+                    156
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"/>
+                    </svg>
+                    32
+                  </span>
+                </div>
+              </div>
+              <p class="text-sm text-slate-600 mb-4">
+                Template de démarrage pour APIs Node.js avec TypeScript, Express, Prisma, JWT auth, validation Zod, tests Jest et configuration Docker prête à l'emploi.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 text-xs bg-green-50 text-green-700 rounded">Node.js</span>
+                <span class="px-2 py-1 text-xs bg-green-50 text-green-700 rounded">TypeScript</span>
+                <span class="px-2 py-1 text-xs bg-green-50 text-green-700 rounded">Docker</span>
+              </div>
+              <a href="https://github.com/votre-username/node-api-boilerplate" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                Voir sur GitHub
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Contributions à des projets existants -->
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center">
+          
+            </span>
+            Contributions à la Communauté
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Contribution 1 -->
+            <div class="p-5 bg-gradient-to-br from-emerald-50 to-white rounded-xl border border-emerald-200 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900 mb-1">Astro</h4>
+                  <p class="text-xs text-emerald-600 font-medium mb-2">Framework Web Moderne</p>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Contribution à la documentation et correction de bugs mineurs dans le système de routage dynamique.
+                  </p>
+                  <div class="flex items-center gap-2 text-xs text-slate-500">
+                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded">3 PRs mergées</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contribution 2 -->
+            <div class="p-5 bg-gradient-to-br from-emerald-50 to-white rounded-xl border border-emerald-200 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900 mb-1">Prisma</h4>
+                  <p class="text-xs text-emerald-600 font-medium mb-2">ORM TypeScript</p>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Amélioration de la documentation sur les relations complexes et optimisation des requêtes N+1.
+                  </p>
+                  <div class="flex items-center gap-2 text-xs text-slate-500">
+                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded">2 PRs mergées</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contribution 3 -->
+            <div class="p-5 bg-gradient-to-br from-emerald-50 to-white rounded-xl border border-emerald-200 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900 mb-1">Tailwind CSS</h4>
+                  <p class="text-xs text-emerald-600 font-medium mb-2">Framework CSS Utility-First</p>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Correction de bugs d'accessibilité et suggestion d'améliorations sur la documentation des composants.
+                  </p>
+                  <div class="flex items-center gap-2 text-xs text-slate-500">
+                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded">5 PRs mergées</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contribution 4 -->
+            <div class="p-5 bg-gradient-to-br from-emerald-50 to-white rounded-xl border border-emerald-200 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-bold text-slate-900 mb-1">Stack Overflow</h4>
+                  <p class="text-xs text-emerald-600 font-medium mb-2">Communauté de Développeurs</p>
+                  <p class="text-sm text-slate-600 mb-3">
+                    Participation active avec plus de 500 réponses fournies sur React, Node.js et TypeScript.
+                  </p>
+                  <div class="flex items-center gap-2 text-xs text-slate-500">
+                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded">1.2k reputation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Call to action -->
+      <div class="mt-8 p-6 bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl text-white">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <h4 class="font-bold text-lg mb-1">Intéressé par la collaboration ?</h4>
+            <p class="text-sm text-slate-300">N'hésitez pas à contribuer à mes projets ou à me proposer des collaborations.</p>
+          </div>
+          <a href="https://github.com/votre-username" target="_blank" rel="noopener noreferrer" 
+             class="px-6 py-3 bg-white text-slate-900 font-semibold rounded-lg hover:bg-slate-100 transition-colors flex items-center gap-2 whitespace-nowrap">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            Voir mon profil GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 : Philosophie de travail -->
     <section>
       <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-        <span class="text-blue-600">🧠</span> Philosophie de travail
+        <span class="text-blue-600"></span> Philosophie de travail
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {philosophies.map((item) => (
@@ -94,18 +590,22 @@ const philosophies = [
       </div>
     </section>
 
-    <!-- Section 4 : Call to Action -->
-    <section class="text-center py-8 bg-blue-600 text-white rounded-2xl px-6">
-      <h2 class="text-2xl font-bold mb-4">Un projet ou un défi technique en tête ?</h2>
-      <p class="text-blue-100 mb-8 max-w-xl mx-auto">
-        Que ce soit pour auditer une architecture, développer une fonctionnalité critique ou accompagner une équipe, discutons-en.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="mailto:votre.email@exemple.com" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors">
-          Me contacter par email
-        </a>
-        <a href="/cv.pdf" target="_blank" class="px-6 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors">
-          Télécharger mon CV (PDF)
+    <!-- Section 6 : Formulaire de contact -->
+    <section class="py-12 bg-white rounded-2xl border border-slate-200 shadow-sm px-6 md:px-12">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Travaillons ensemble</h2>
+        <p class="text-slate-600 max-w-xl mx-auto">
+          Vous avez un projet en tête ou vous souhaitez discuter d'une opportunité ? 
+          Remplissez ce formulaire et je vous recontacte dans les 24h.
+        </p>
+      </div>
+      
+      <ContactForm client:load />
+      
+      <div class="mt-8 text-center text-sm text-slate-500">
+        <p>Ou envoyez-moi un email directement : </p>
+        <a href="mailto:votre.email@exemple.com" class="text-blue-600 hover:underline font-medium">
+          votre.email@exemple.com
         </a>
       </div>
     </section>

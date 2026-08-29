@@ -5,68 +5,54 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Accueil | MARA - Développeur Full Stack">
   
-  <!-- Page d'accueil complète avec fond vert -->
-  <div class="min-h-screen bg-gradient-to-br from-[#022c22] via-[#064e3b] to-[#0f766e]">
+  <!-- Conteneur plein écran avec marges négatives pour annuler le padding du layout -->
+  <div class="min-h-screen bg-gradient-to-br from-[#022c22] via-[#064e3b] to-[#0f766e] -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-20 md:py-24">
     
-    <!-- Contenu principal centré verticalement -->
-    <div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
-      <div class="max-w-5xl mx-auto text-center">
-        
-        <!-- Titre principal -->
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 animate-fade-in-up">
-          Développeur Junior <span class="text-emerald-400">JavaScript</span>
-        </h1>
-        
-        <!-- Sous-titre -->
-        <p class="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto mb-12 leading-relaxed">
-          Je conçois des architectures web performantes, maintenables et centrées sur l'utilisateur. 
-          Spécialisé en React, Node.js et optimisation des Core Web Vitals.
-        </p>
-        
-        <!-- Boutons d'action -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-          <a href="/a-propos" class="px-8 py-4 bg-white text-[#064e3b] font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-2xl hover:shadow-emerald-500/20 hover:scale-105">
-            Découvrir mon profil
-          </a>
-          <a href="mailto:votre.email@exemple.com" class="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
-            Me contacter
-          </a>
-        </div>
-
-        <!-- Section Compétences (Cartes) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <div class="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300">
-            <div class="text-4xl mb-4"></div>
-            <h3 class="font-bold text-xl mb-3 text-white">Performance</h3>
-            <p class="text-emerald-100 text-sm leading-relaxed">Architecture optimisée pour des scores Lighthouse 100/100 et un temps de chargement minimal.</p>
-          </div>
-          
-          <div class="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300">
-            <div class="text-4xl mb-4"></div>
-            <h3 class="font-bold text-xl mb-3 text-white">Type Safety</h3>
-            <p class="text-emerald-100 text-sm leading-relaxed">TypeScript strict et validation des données avec Zod pour un code fiable et maintenable.</p>
-          </div>
-          
-          <div class="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300">
-            <div class="text-4xl mb-4"></div>
-            <h3 class="font-bold text-xl mb-3 text-white">Accessibilité</h3>
-            <p class="text-emerald-100 text-sm leading-relaxed">HTML sémantique, navigation au clavier et respect des normes WCAG pour tous les utilisateurs.</p>
-          </div>
-        </div>
-
-        <!-- Call to Action secondaire -->
-        <div class="mt-20 text-center">
-          <p class="text-emerald-200 text-lg mb-6">Prêt à collaborer sur votre prochain projet ?</p>
-          <a href="/a-propos" class="inline-flex items-center gap-2 text-white font-semibold hover:text-emerald-300 transition-colors">
-            Voir mes compétences 
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-        </div>
-
+    <!-- Contenu principal centré -->
+    <div class="max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] text-center">
+      
+      <!-- Titre principal -->
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 animate-fade-in-up">
+        Développeur Senior <span class="text-emerald-400">JavaScript</span>
+      </h1>
+      
+      <!-- Sous-titre -->
+      <p class="text-xl md:text-2xl text-emerald-100 max-w-3xl mb-12 leading-relaxed">
+        Je conçois des architectures web performantes, maintenables et centrées sur l'utilisateur. 
+        Spécialisé en React, Node.js et optimisation des Core Web Vitals.
+      </p>
+      
+      <!-- Boutons d'action -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-20">
+        <a href="/a-propos" class="px-8 py-4 bg-white text-[#064e3b] font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-2xl hover:shadow-emerald-500/20 hover:scale-105">
+          Découvrir mon profil
+        </a>
+        <a href="mailto:votre.email@exemple.com" class="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+          Me contacter
+        </a>
       </div>
-    </div>
 
+      <!-- Section Compétences (Cartes avec effet glassmorphism) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+        <div class="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300">
+          <div class="text-4xl mb-4"></div>
+          <h3 class="font-bold text-xl mb-3 text-white">Performance</h3>
+          <p class="text-emerald-100 text-sm leading-relaxed">Architecture optimisée pour des scores Lighthouse 100/100 et un temps de chargement minimal.</p>
+        </div>
+        
+        <div class="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300">
+          <div class="text-4xl mb-4"></div>
+          <h3 class="font-bold text-xl mb-3 text-white">Type Safety</h3>
+          <p class="text-emerald-100 text-sm leading-relaxed">TypeScript strict et validation des données avec Zod pour un code fiable et maintenable.</p>
+        </div>
+        
+        <div class="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300">
+          <div class="text-4xl mb-4"></div>
+          <h3 class="font-bold text-xl mb-3 text-white">Accessibilité</h3>
+          <p class="text-emerald-100 text-sm leading-relaxed">HTML sémantique, navigation au clavier et respect des normes WCAG pour tous les utilisateurs.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </BaseLayout>

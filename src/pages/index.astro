@@ -1,39 +1,47 @@
 ---
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectsGrid from '../components/ProjectsGrid.tsx';
 ---
 
 <BaseLayout title="Accueil | MARA - Développeur Full Stack" fullWidth={true}>
   
-  <!-- Page d'accueil plein écran avec fond teal -->
+  <!-- ============================================ -->
+  <!-- SECTION 1 : HERO AVEC FOND TEAL -->
+  <!-- ============================================ -->
   <div class="min-h-screen bg-gradient-to-br from-[#022c22] via-[#064e3b] to-[#0f766e]">
     
-    <!-- Contenu centré verticalement -->
     <div class="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
       
+      <!-- Badge de statut -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-8 animate-fade-in-up">
+        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+        <span class="text-emerald-100 text-sm font-medium">Disponible pour de nouveaux projets</span>
+      </div>
+
       <!-- Titre principal -->
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 animate-fade-in-up">
-        Développeur Junior <span class="text-emerald-400">JavaScript</span>
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 text-center animate-fade-in-up">
+        Développeur Senior <span class="text-emerald-400">JavaScript</span>
       </h1>
       
       <!-- Sous-titre -->
-      <p class="text-xl md:text-2xl text-emerald-100 max-w-3xl text-center mb-12 leading-relaxed">
+      <p class="text-xl md:text-2xl text-emerald-100 max-w-3xl text-center mb-12 leading-relaxed animate-fade-in-up">
         Je conçois des architectures web performantes, maintenables et centrées sur l'utilisateur. 
         Spécialisé en React, Node.js et optimisation des Core Web Vitals.
       </p>
       
       <!-- Boutons d'action -->
-      <div class="flex flex-col sm:flex-row gap-4 mb-20">
-        <a href="/a-propos" class="px-8 py-4 bg-white text-[#064e3b] font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-2xl hover:shadow-emerald-500/20 hover:scale-105">
+      <div class="flex flex-col sm:flex-row gap-4 mb-20 animate-fade-in-up">
+        <a href="/a-propos" class="px-8 py-4 bg-white text-[#064e3b] font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-2xl hover:shadow-emerald-500/20 hover:scale-105 text-center">
           Découvrir mon profil
         </a>
-        <a href="mailto:votre.email@exemple.com" class="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+        <a href="mailto:votre.email@exemple.com" class="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm text-center">
           Me contacter
         </a>
       </div>
 
-      <!-- Section Compétences -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+      <!-- Cartes de compétences -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl animate-fade-in-up">
         <div class="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300">
           <div class="text-4xl mb-4"></div>
           <h3 class="font-bold text-xl mb-3 text-white">Performance</h3>
@@ -53,6 +61,106 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
 
+      <!-- Indicateur de scroll -->
+      <div class="mt-16 animate-bounce">
+        <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+
     </div>
   </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2 : PROJETS / RÉALISATIONS -->
+  <!-- ============================================ -->
+  <div class="bg-gradient-to-b from-white to-slate-50 py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- En-tête de section -->
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 bg-emerald-50 text-[#00796B] text-sm font-semibold rounded-full mb-4">
+          Portfolio
+        </span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+          Mes Réalisations
+        </h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+          Découvrez une sélection de mes projets récents, construits avec les technologies modernes
+        </p>
+      </div>
+
+      {/* Composant ProjectsGrid avec filtres interactifs */}
+      <ProjectsGrid client:visible />
+
+      <!-- Bouton Voir plus -->
+      <div class="text-center mt-16">
+        <a href="/a-propos" class="inline-flex items-center gap-2 px-8 py-4 bg-[#00796B] text-white font-bold rounded-xl hover:bg-[#00695C] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+          Voir tous mes projets
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3 : STATISTIQUES -->
+  <!-- ============================================ -->
+  <div class="bg-[#00796B] py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        
+        <div class="text-white">
+          <div class="text-4xl md:text-5xl font-extrabold mb-2">7+</div>
+          <div class="text-emerald-100 text-sm font-medium">Années d'expérience</div>
+        </div>
+
+        <div class="text-white">
+          <div class="text-4xl md:text-5xl font-extrabold mb-2">50+</div>
+          <div class="text-emerald-100 text-sm font-medium">Projets réalisés</div>
+        </div>
+
+        <div class="text-white">
+          <div class="text-4xl md:text-5xl font-extrabold mb-2">30+</div>
+          <div class="text-emerald-100 text-sm font-medium">Clients satisfaits</div>
+        </div>
+
+        <div class="text-white">
+          <div class="text-4xl md:text-5xl font-extrabold mb-2">100%</div>
+          <div class="text-emerald-100 text-sm font-medium">Engagement qualité</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4 : CALL TO ACTION FINAL -->
+  <!-- ============================================ -->
+  <div class="bg-gradient-to-br from-[#022c22] via-[#064e3b] to-[#0f766e] py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      
+      <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">
+        Prêt à collaborer sur votre prochain projet ?
+      </h2>
+      
+      <p class="text-xl text-emerald-100 mb-10 leading-relaxed">
+        Discutons de vos besoins et trouvons ensemble la meilleure solution technique pour atteindre vos objectifs.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:votre.email@exemple.com" class="px-8 py-4 bg-white text-[#064e3b] font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-2xl hover:scale-105">
+          Démarrer un projet
+        </a>
+        <a href="/services" class="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+          Voir mes services
+        </a>
+      </div>
+
+    </div>
+  </div>
+
 </BaseLayout>

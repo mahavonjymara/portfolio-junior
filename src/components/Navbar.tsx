@@ -35,6 +35,7 @@ export default function Navbar() {
           {/* Menu Desktop */}
           <ul className="hidden md:flex gap-6 text-sm font-medium text-white items-center">
             <li><a href="/" className="hover:text-emerald-200 transition-colors">Accueil</a></li>
+            <li><a href="/projets" className="hover:text-emerald-200 transition-colors">Projets</a></li>
             <li><a href="/services" className="hover:text-emerald-200 transition-colors">Services</a></li>
             <li><a href="/a-propos" className="hover:text-emerald-200 transition-colors">À propos</a></li>
             
@@ -80,6 +81,11 @@ export default function Navbar() {
             <li>
               <a href="/" onClick={closeMenu} className="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors">
                 Accueil
+              </a>
+            </li>
+            <li>
+              <a href="/projets" onClick={closeMenu} className="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors">
+                Projets
               </a>
             </li>
             <li>

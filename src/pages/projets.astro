@@ -1,0 +1,25 @@
+---
+// src/pages/projets.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectsGrid from '../components/ProjectsGrid.tsx';
+---
+
+<BaseLayout title="Projets | MARA - Développeur Full Stack">
+  
+  <!-- En-tête de la page -->
+  <div class="text-center mb-16 pt-8">
+    <span class="inline-block px-4 py-1.5 bg-emerald-50 text-[#00796B] text-sm font-semibold rounded-full mb-4">
+      Portfolio
+    </span>
+    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+      Mes Réalisations
+    </h1>
+    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+      Découvrez une sélection de mes projets récents, construits avec les technologies modernes.
+    </p>
+  </div>
+
+  <!-- Grille de projets avec filtres -->
+  <ProjectsGrid client:visible />
+
+</BaseLayout>

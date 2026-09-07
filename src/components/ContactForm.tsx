@@ -1,11 +1,15 @@
 // src/components/ContactForm.tsx
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 
-export default function ContactForm() {
+// On ajoute une prop optionnelle onSuccess
+interface ContactFormProps {
+  onSuccess?: () => void;
+}
+
+export default function ContactForm({ onSuccess }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   
-  // Utilisation de React.FormEvent au lieu d'importer FormEvent séparément
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
     
@@ -13,9 +17,7 @@ export default function ContactForm() {
     const formObject = Object.fromEntries(formData.entries());
     
     try {
-      // Utilisation de la variable d'environnement (ou fallback si non définie)
       const formspreeId = import.meta.env.VITE_FORMSPREE_ID || 'VOTRE_ID_FORMSPREE';
-      
       const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',
         headers: {
@@ -28,6 +30,13 @@ export default function ContactForm() {
       if (response.ok) {
         setStatus('success');
         e.currentTarget.reset();
+        // Fermer la modale après 2 secondes si la fonction est fournie
+        if (onSuccess) {
+          setTimeout(() => {
+            onSuccess();
+            setStatus('idle'); // Réinitialiser pour la prochaine fois
+          }, 2000);
+        }
       } else {
         setStatus('error');
       }
@@ -37,8 +46,7 @@ export default function ContactForm() {
   };
   
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
-      
+    <form onSubmit={handleSubmit} className="space-y-5">
       {/* Nom */}
       <div>
         <label htmlFor="name" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
@@ -50,7 +58,7 @@ export default function ContactForm() {
           name="name"
           required
           className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none transition-all focus:border-[#00796B] focus:ring-2 focus:ring-[#00796B]/20"
-          placeholder="Tapez votre nom"
+          placeholder="Jean Dupont"
         />
       </div>
       
@@ -65,7 +73,7 @@ export default function ContactForm() {
           name="email"
           required
           className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none transition-all focus:border-[#00796B] focus:ring-2 focus:ring-[#00796B]/20"
-          placeholder="Tapez votre email"
+          placeholder="jean@exemple.com"
         />
       </div>
       
@@ -78,7 +86,7 @@ export default function ContactForm() {
           id="message"
           name="message"
           required
-          rows={5}
+          rows={4}
           className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none transition-all focus:border-[#00796B] focus:ring-2 focus:ring-[#00796B]/20 resize-none"
           placeholder="Bonjour, je suis intéressé par..."
         />
@@ -88,7 +96,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className={`w-full py-4 px-6 rounded-lg font-bold text-white text-base tracking-wide transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98] ${
+        className={`w-full py-3.5 px-6 rounded-lg font-bold text-white text-base tracking-wide transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98] ${
           status === 'sending'
             ? 'bg-slate-400 cursor-not-allowed'
             : 'bg-[#00796B] hover:bg-[#00695C]'
@@ -104,26 +112,17 @@ export default function ContactForm() {
           </span>
         ) : 'Envoyer le message'}
       </button>
-      
-      {/* Messages de statut : Succès */}
+
+      {/* Messages de statut */}
       {status === 'success' && (
-        <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg text-emerald-800 dark:text-emerald-200 text-sm flex items-start gap-3 animate-fade-in-up">
-          <span className="text-xl"></span>
-          <div>
-            <p className="font-semibold">Message envoyé avec succès !</p>
-            <p className="mt-1 opacity-90">Je vous recontacte rapidement.</p>
-          </div>
+        <div className="p-3 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg text-emerald-800 dark:text-emerald-200 text-sm flex items-center gap-2 animate-fade-in-up">
+          <span></span> Message envoyé avec succès !
         </div>
       )}
       
-      {/* Messages de statut : Erreur */}
       {status === 'error' && (
-        <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-800 dark:text-red-200 text-sm flex items-start gap-3 animate-fade-in-up">
-          <span className="text-xl"></span>
-          <div>
-            <p className="font-semibold">Une erreur est survenue.</p>
-            <p className="mt-1 opacity-90">Veuillez réessayer ou m'envoyer un email directement.</p>
-          </div>
+        <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-800 dark:text-red-200 text-sm flex items-center gap-2 animate-fade-in-up">
+          <span></span> Une erreur est survenue. Veuillez réessayer.
         </div>
       )}
     </form>

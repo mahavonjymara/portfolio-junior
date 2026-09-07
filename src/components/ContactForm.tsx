@@ -1,7 +1,6 @@
 // src/components/ContactForm.tsx
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react'; // <-- PAS de FormEvent ici !
 
-// On ajoute une prop optionnelle onSuccess
 interface ContactFormProps {
   onSuccess?: () => void;
 }
@@ -9,7 +8,8 @@ interface ContactFormProps {
 export default function ContactForm({ onSuccess }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  // Utilisation de React.FormEvent au lieu de l'importer
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
     
@@ -30,11 +30,12 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
       if (response.ok) {
         setStatus('success');
         e.currentTarget.reset();
+        
         // Fermer la modale après 2 secondes si la fonction est fournie
         if (onSuccess) {
           setTimeout(() => {
             onSuccess();
-            setStatus('idle'); // Réinitialiser pour la prochaine fois
+            setStatus('idle');
           }, 2000);
         }
       } else {
